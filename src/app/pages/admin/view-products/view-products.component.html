@@ -1,0 +1,23 @@
+<mat-card class="mt10" *ngFor="let p of productos">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>
+            {{ p.nombre }}
+        </mat-card-title>
+        <mat-card-subtitle>
+            {{ p.descripcion }}
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-card-actions>
+            <button mat-stroked-button color="primary" class="ml20 col-md-4">Categoria: {{ p.categoria.nombre }}</button>
+            <button mat-stroked-button color="primary" class="ml20 col-md-2">Stock: {{ p.stock }}</button>
+            <button [routerLink]="'/admin/producto/'+p.productoId" mat-flat-button color="primary" class="ml20">Actualizar</button>
+            <button mat-flat-button color="warn" class="ml10" (click)="eliminarProducto(p.productoId)">Eliminar Prodcuto</button>
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>
+
+<div class="container text-center mt20">
+    <button routerLink="/admin/add-producto" mat-raised-button color="primary">Agregar Producto</button>
+</div>

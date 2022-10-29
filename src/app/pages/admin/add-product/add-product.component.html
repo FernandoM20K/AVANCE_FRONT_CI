@@ -1,0 +1,59 @@
+<mat-card class="mt10">
+    <h1>Agregar Nuevo Producto</h1>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <form (ngSubmit)="guardarProducto()">
+                <mat-form-field class="w100" appearance="outline">
+                    <mat-label>Nombre del Producto</mat-label>
+                    <input
+                        [(ngModel)]="producto.nombre"
+                        type="text"
+                        name="nombre"
+                        placeholder="Ingrese el Nombre del Producto"
+                        matInput
+                        required
+                    >
+                </mat-form-field>
+                <mat-form-field class="w100" appearance="outline">
+                    <mat-label>Descripción</mat-label>
+                    <textarea
+                        [(ngModel)]="producto.descripcion"
+                        type="texy"
+                        name="descripcion"
+                        placeholder="Ingrese la descripción"
+                        matInput
+                        rows="8"
+                    ></textarea>
+                </mat-form-field>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="w100" appearance="outline">
+                            <mat-label>Stock</mat-label>
+                            <input
+                                [(ngModel)]="producto.stock"
+                                type="number"
+                                name="stock"
+                                placeholder="Ingrese el stock del Producto"
+                                matInput
+                            >
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <mat-form-field appearance="outline" class="mt20 w100">
+                    <mat-label>Categorias</mat-label>
+                    <mat-select name="categoria" [(ngModel)]="producto.categoria.categoriaId">
+                        <mat-option *ngFor="let c of categorias" [value]="c.categoriaId">
+                            {{ c.nombre }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <div class="container text-center">
+                    <button mat-raised-button color="primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</mat-card>
